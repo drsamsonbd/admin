@@ -39,6 +39,40 @@
           </li>
         </ul>
       </li> 
+           <!--URUSAN AM-->
+        <li  class="nav-item has-treeview"  v-if="roles.includes('superadmin')    || roles.includes('hospital') "  >
+        <a class="nav-link" >
+        <i class="nav-icon fas fa-briefcase white"></i>
+  
+          <p>URUSAN AM
+           <i class="right fas fa-angle-left"></i>
+           </p>
+        </a>
+    
+           <ul class="nav nav-treeview">
+
+          <li class="nav-item">
+            <router-link to="/document" class="nav-link">
+             
+              <p id="submenu">
+                Pengurusan Dokumen
+              </p>
+            </router-link>
+          </li>
+
+       
+          <li class="nav-item">
+            <router-link to="/printing" class="nav-link">
+             
+              <p id="submenu">
+                Pencetakan
+              </p>
+            </router-link>
+          </li>
+
+     
+        </ul>
+      </li> 
       <!--KEWANGAN-->
         <li  class="nav-item has-treeview"  v-if="roles.includes('superadmin')    || roles.includes('hospital') "  >
         <a class="nav-link" >

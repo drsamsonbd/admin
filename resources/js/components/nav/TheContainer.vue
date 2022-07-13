@@ -99,7 +99,7 @@ export default {
          roles: '',
          user: localStorage.getItem('user'),
          logohbln:'',
-         APPNAME: 'Pengurusan Inventori',
+         APPNAME: 'Pengurusan Hospital',
     
 
       }

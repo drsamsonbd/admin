@@ -39,6 +39,11 @@ let editproduct= require('./components/product/edit.vue').default;
 let allocation = require('./components/finance/index.vue').default;
 let code = require('./components/finance/category.vue').default;
 
+//urusanam component
+let document = require('./components/urusanam/document.vue').default;
+let printing = require('./components/urusanam/printing.vue').default;
+
+
 //perolehan component
 let pembelian = require('./components/perolehan/pembelian.vue').default;
 //let code = require('./components/finance/category.vue').default;
@@ -97,6 +102,10 @@ export const routes = [
     //finance routes
     { path: '/allocation', component: allocation, name:'allocation' },
     { path: '/code', component: code, name:'code' },
+
+      //finance routes
+      { path: '/document', component: document, name:'document' },
+      { path: '/printing', component: printing, name:'printing' },
 
        //perolehan routes
        { path: '/pembelian', component: pembelian, name:'pembelian' },
