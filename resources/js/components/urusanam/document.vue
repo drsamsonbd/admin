@@ -34,8 +34,8 @@
                    <div class="form-group">
                   <div class="form-row">
                     <div class="col-md-12">
-                    <input type="text" class="form-control" id="descriptions" placeholder="Tajuk Dokumen" v-model="form.document_name">
-                    <small class="text-danger" v-if="errors.document_name "> {{ errors.document_name[0] }} </small>          
+                    <input type="text" class="form-control" id="descriptions" placeholder="Catatan" v-model="form.document_note">
+                    <small class="text-danger" v-if="errors.document_note "> {{ errors.document_note[0] }} </small>          
                    </div> 
                   </div>
                 </div>
@@ -50,6 +50,20 @@
                    <small class="text-danger" v-if="errors.purpose_name">{{errors.purpose_name[0]}}</small>
                     </div> 
                     </div>
+                      <div class="container">
+    <div>
+     <div class="form-row">  
+                 
+                        <div class="form-group col-md-12">
+                 
+      <label>File
+        <input type="file" @change="handleFileUpload( $event )"/>
+      </label>
+
+    </div>
+     </div>
+    </div>
+  </div>
                 <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Hantar</button>
                 </div>
