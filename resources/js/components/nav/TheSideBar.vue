@@ -51,24 +51,63 @@
     
            <ul class="nav nav-treeview">
 
+              <li  class="nav-item has-treeview"  v-if="roles.includes('superadmin')    || roles.includes('hospital') "  >
+        <a class="nav-link" >
+         
+          <p>Pengurusan Dokumen
+           <i class="right fas fa-angle-left"></i>
+           </p>
+        </a>
+               <ul class="nav nav-treeview">
           <li class="nav-item">
             <router-link to="/document" class="nav-link">
+                 <p id="submenu">
+                Tandatangan
+              </p>
+            </router-link>
+          </li>
+       
+          <li class="nav-item">
+            <router-link to="/allocation" class="nav-link">
              
               <p id="submenu">
-                Pengurusan Dokumen
+                Kelulusan  
               </p>
             </router-link>
           </li>
 
-       
+     
+        </ul>
+      </li> 
+
+             <li  class="nav-item has-treeview"  v-if="roles.includes('superadmin')    || roles.includes('hospital') "  >
+        <a class="nav-link" >
+         
+          <p>Percetakan
+           <i class="right fas fa-angle-left"></i>
+           </p>
+        </a>
+               <ul class="nav nav-treeview">
           <li class="nav-item">
-            <router-link to="/printing" class="nav-link">
-             
-              <p id="submenu">
-                Pencetakan
+            <router-link to="/document" class="nav-link">
+                 <p id="submenu">
+                Pemohonan
               </p>
             </router-link>
           </li>
+       
+          <li class="nav-item">
+            <router-link to="/allocation" class="nav-link">
+             
+              <p id="submenu">
+                Pengurusan  
+              </p>
+            </router-link>
+          </li>
+
+     
+        </ul>
+      </li> 
 
      
         </ul>

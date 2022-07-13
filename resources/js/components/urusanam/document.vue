@@ -8,17 +8,17 @@
  <div class="row">
    <div class="col-lg-12 mb-4">
    <div>
-    <b-button size="sm" variant="outline-primary" id="show-btn" @click="showModal">Kod Baru</b-button>
+    <b-button size="sm" variant="outline-primary" id="show-btn" @click="showModal">Dokumen Baru</b-button>
 
-    <b-modal ref="my-modal" hide-footer title="Kod Peruntukan">
+    <b-modal ref="my-modal" hide-footer title="Muat Naik Dokumen">
     
             <form class="user" @submit.prevent="categoryInsert">
 
               <div class="form-group">
                 <div class="form-row">
                   <div class="col-md-12">
-                    <input type="text" class="form-control" id="finance_Code" placeholder="Sila masukkan kod peruntukan" v-model="form.finance_code">
-                    <small class="text-danger" v-if="errors.finance_code"> {{ errors.finance_code[0] }} </small>          
+                    <input type="text" class="form-control" id="ref_number" placeholder="Nombor rujukan" v-model="form.ref_number">
+                    <small class="text-danger" v-if="errors.ref_number"> {{ errors.ref_number[0] }} </small>          
                     </div> 
                  </div>
                </div>
@@ -26,14 +26,32 @@
              <div class="form-group">
                   <div class="form-row">
                     <div class="col-md-12">
-                    <input type="text" class="form-control" id="descriptions" placeholder="Maklumat peruntukan" v-model="form.descriptions">
-                    <small class="text-danger" v-if="errors.descriptions"> {{ errors.descriptions[0] }} </small>          
+                    <input type="text" class="form-control" id="descriptions" placeholder="Tajuk Dokumen" v-model="form.document_name">
+                    <small class="text-danger" v-if="errors.document_name "> {{ errors.document_name[0] }} </small>          
                    </div> 
                   </div>
                 </div>
-                
+                   <div class="form-group">
+                  <div class="form-row">
+                    <div class="col-md-12">
+                    <input type="text" class="form-control" id="descriptions" placeholder="Tajuk Dokumen" v-model="form.document_name">
+                    <small class="text-danger" v-if="errors.document_name "> {{ errors.document_name[0] }} </small>          
+                   </div> 
+                  </div>
+                </div>
+                <div class="form-row">  
+                 
+                        <div class="form-group col-md-12">
+                      <label>Tujuan</label>
+                   <select class="form-control" id="purposeID" v-model="form.purpose_id">
+                        <option v-for="purpose in purposes "   v-bind:key="purpose.id" :value="purpose.id"> {{purpose.value}}</option>
+                        
+                        </select>
+                   <small class="text-danger" v-if="errors.purpose_name">{{errors.purpose_name[0]}}</small>
+                    </div> 
+                    </div>
                 <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Simpan</button>
+                <button type="submit" class="btn btn-primary btn-block">Hantar</button>
                 </div>
                
       </form>      
@@ -232,6 +250,20 @@
      data(){
       return{
         finance_code:[],
+        purposes:[
+      {
+        "id": "1",
+        "value": "Tandatangan"
+      },
+      {
+        "id": "2",
+        "value": "Permohonan"
+      },
+      {
+        "id": "3",
+        "value": "Maklumbalas"
+      }
+    ],
         searchTerm:'',
         
           form:{
