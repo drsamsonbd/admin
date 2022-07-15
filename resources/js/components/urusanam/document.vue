@@ -12,7 +12,7 @@
 
     <b-modal ref="my-modal" hide-footer title="Muat Naik Dokumen">
     
-            <form class="user" @submit.prevent="categoryInsert">
+            <form class="user" @submit.prevent="documentSubmit">
 
               <div class="form-group">
                 <div class="form-row">
@@ -326,6 +326,7 @@
           { key: 'descriptions', label: 'Deskripsi', sortable: true, sortDirection: 'asc' },
           { key: 'actions', label: 'Actions' },
         ],
+        file: '',
       }
  
 
@@ -400,7 +401,14 @@
        
       },
    
-       categoryInsert(){
+       documentSubmit(){
+        let formData = new FormData();
+
+            /*
+                Add the form data we need to submit
+            */
+            formData.append('file', this.file);
+
        axios.post('/api/finance_category'+ '?token='+ localStorage.getItem('token'),this.form)
        .then(() => {
         window.location.reload()
@@ -419,6 +427,10 @@
        .catch(error =>this.errors = error.response.data.errors)
        
      },
+    
+      handleFileUpload(){
+    this.file = event.target.files[0];
+      },
    
   },
  
