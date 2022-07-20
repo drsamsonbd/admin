@@ -13,7 +13,11 @@
     <b-modal ref="my-modal" hide-footer title="Muat Naik Dokumen">
     
             <form class="user" @submit.prevent="documentSubmit">
-
+                        <div class="form-group">
+                      <label>User ID:</label>
+                      <input type="text" class="form-control" id="exampleInputID" placeholder="ID" v-model="forms.user_id">
+                     
+                    </div>  
               <div class="form-group">
                 <div class="form-row">
                   <div class="col-md-12">
@@ -233,37 +237,27 @@
 
 
 <script type="text/javascript">
- 
   export default {
-    created(){
+      created(){
       if (!User.loggedIn()) {
-        this.$router.push({name: '/'})
+        this.$router.push({name: '/login'})
 
-        	let id = this.$route.params.id
-  	axios.get('/api/finance_category/'+id+ '?token='+ localStorage.getItem('token'))
-  	.then(({data}) => (this.form = data))
-  	.catch(console.log('error'))
+    
       }
   
     },
+      
      mounted(){
-    this.allCategory();
-     let roles = localStorage.getItem('roles');
-      if(roles.includes("finance")-1){
-      this.$router.push({name: 'home'})
-      Notification.unauthorized()
-
-
-       
-  
-    }
-    },
+        this.getRoles();
+        this.allUser();
+        this.allDept();    
+      },
     
   
    
      data(){
       return{
-        finance_code:[],
+        users:[],
         purposes:[
       {
         "id": "1",
@@ -388,8 +382,12 @@
                 })
 
       },
-      showModal() {
+      showModal(id) {
+        axios.get('/api/user/'+id + '?token='+ localStorage.getItem('token'))
+  	    .then(({data}) => (this.forms = data))
         this.$refs['my-modal'].show()
+        
+      
       },
        hideModal() {
         this.$refs['edit-modal'].hide()
@@ -400,6 +398,8 @@
         this.$refs['edit-modal'].toggle('#toggle-btn')
        
       },
+
+  
    
        documentSubmit(){
         let formData = new FormData();
